@@ -10,6 +10,8 @@ namespace CheckListFronts
     {
         static void Main(string[] args)
         {
+
+            //TODO открыть отдельный поток
         }
     }
 }
