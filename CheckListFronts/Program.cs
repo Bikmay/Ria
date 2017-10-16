@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CheckListFronts
@@ -10,8 +11,24 @@ namespace CheckListFronts
     {
         static void Main(string[] args)
         {
+            Thread thread = new Thread(CheckBaseFonts);
 
-            //TODO открыть отдельный поток
+            thread.Start();
+        }
+
+        static void CheckBaseFonts()
+        {
+
+            while(true)
+            {
+                IExml.WriteFontsToXmlList(LocalFonts.GetSetupingFonts());
+
+                //TODO отправка на сервер
+
+                Thread.Sleep(900000);
+            }
+
+
         }
     }
 }

@@ -13,7 +13,7 @@ namespace CheckListFronts
 
         public static int countOfFamiliesFonts = 0;
 
-        public static FontFamily[] ParsingDesctopFonts()
+        private static FontFamily[] ParsingDesctopFonts()
         {
             FontFamily[] fontFamilies; //Создаём массив семей шрифтов
 
@@ -28,6 +28,21 @@ namespace CheckListFronts
 
             
 
+        }
+
+        public static List<string> GetSetupingFonts()//Создаём список с названием всех шрифтов 
+        {
+            FontFamily[] massFonts;
+            List<string> ReturnList=new List<string>();
+
+            massFonts = ParsingDesctopFonts();
+
+            for(int i=0;i<massFonts.Length;i++)
+            {
+                ReturnList.Add(massFonts[i].Name);
+            }
+
+            return ReturnList;
         }
 
     }

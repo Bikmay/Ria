@@ -12,9 +12,33 @@ namespace CheckListFronts
     class IExml
     {
 
-        public static void AddFontTpoList(FontFamily ob)
-        {
+        static string nameofFile = "froL.txt";
 
+        public static void WriteFontsToXmlList(List<string> ListOfFonts) //Вписываем в Xml список шрифтов 
+        {
+            XmlDocument file = new XmlDocument();
+
+            file.Load(nameofFile);
+
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.OmitXmlDeclaration = false;
+
+            using (XmlWriter writer = XmlWriter.Create(nameofFile, settings))
+            {
+                writer.WriteStartAttribute("list");
+
+
+
+                for (int i = 0; i < ListOfFonts.Count; i++)
+                {
+                    writer.WriteElementString("font", ListOfFonts.ElementAt(i));
+                }
+
+                writer.WriteEndAttribute();
+            }
+
+
+            
         }
         
     }
